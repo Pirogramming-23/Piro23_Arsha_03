@@ -9,6 +9,6 @@
   "files.insertFinalNewline": true,         // 마지막 줄 자동 줄바꿈
   "editor.wordWrap": "on",                  // 코드 줄 넘침 시 자동 줄바꿈
   "editor.codeActionsOnSave": {
-    "source.fixAll": true                   // 가능한 모든 자동 수정 적용 (Prettier 등)
+    "source.fixAll": "explicit"
   }
 }
