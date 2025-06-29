@@ -162,45 +162,33 @@
         </div>
 
         <style>
-          /* 1. 기본적으로 모든 포트폴리오 아이템을 숨김 */
-          .photo-grid .portfolio-item {
+          .photo-grid {
+            column-count: 3;
+            column-gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            /*display: flex;
+            gap: 24px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;*/
+          }
+
+          .photo-grid .column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            flex: 1;
+          }
+
+          .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+            /*width: 100%;*/
             display: none;
-          }
-
-          /* 2. 'All' 버튼이 선택되었을 때 전부 보이기 */
-          #all:checked~.photo-grid .portfolio-item {
-            display: block;
-          }
-
-          /* 3. 'App' 버튼이 선택되었을 때 App만 보이기 */
-          #app:checked~.photo-grid .filter-app {
-            display: block;
-          }
-
-          /* 4. 'Card' 버튼이 선택되었을 때 Card만 보이기 */
-          #card:checked~.photo-grid .filter-card {
-            display: block;
-          }
-
-          /* 5. 'Web' 버튼이 선택되었을 때 Web만 보이기 */
-          #web:checked~.photo-grid .filter-web {
-            display: block;
-          }
-
-          .portfolio-wrapper input[type="radio"] {
-            display: none;
-          }
-
-          .portfolio-wrapper input[type="radio"]:checked+label {
-            background-color: #47b2e4;
-            color: white;
-          }
-
-          .photo-grid .portfolio-item {
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale;
             transition: all 0.4s ease;
-            display: none;
           }
 
           #all:checked~.photo-grid .portfolio-item,
@@ -212,18 +200,13 @@
             transform: scale(1);
           }
 
-          .photo-grid {
-            column-count: 3;
-            column-gap: 24px;
-            padding: 0 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+          .portfolio-wrapper input[type="radio"] {
+            display: none;
           }
 
-          .portfolio-item {
-            display: inline-block;
-            width: 100%;
-            margin-bottom: 24px;
+          .portfolio-wrapper input[type="radio"]:checked+label {
+            background-color: #47b2e4;
+            color: white;
           }
 
           .portfolio-item img {
@@ -232,46 +215,9 @@
             display: block;
           }
 
-          .portfolio-item h4 {
-            margin: 10px 0 4px;
-            font-size: 1.1em;
-            text-align: left;
-            color: #333;
-          }
-
-          .portfolio-item p {
-            font-size: 0.9em;
-            color: #777;
-            text-align: left;
-          }
-
-          /* 이미지 래퍼 */
           .portfolio-img {
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-          }
-
-          /* 오버레이 정보창 */
-          .portfolio-icons {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 10px;
-          }
-
-          .portfolio-icons img.icon {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0.8;
-          }
-
-          .portfolio-icons a:hover img.icon {
-            transform: scale(1.1);
-            opacity: 1;
           }
 
           .portfolio-info {
@@ -280,9 +226,13 @@
             left: 0;
             right: 0;
             background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             transform: translateY(100%);
             transition: transform 0.3s ease;
+            height: 60px;
             text-align: left;
           }
 
@@ -290,24 +240,73 @@
             transform: translateY(0);
           }
 
-          /* 제목 & 설명 */
-          .portfolio-info h4 {
+          .portfolio-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          .portfolio-text h4 {
             font-size: 16px;
             color: #37517e;
-            margin: 0 0 5px;
+            margin: 0 0 8px;
+            padding: 0 50px 0 0;
             font-weight: 700;
           }
 
-          .portfolio-info p {
+          .portfolio-text p {
             font-size: 14px;
             color: #666;
             margin: 0;
           }
 
+          .portfolio-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+          }
+
+          .portfolio-icons img.icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            opacity: 0.6;
+            filter: grayscale(100%) brightness(1.2);
+            /* 회색 효과 */
+            transition: filter 0.3s ease, opacity 0.3s ease;
+          }
+
+          .portfolio-icons img[src*="link-45deg"] {
+            width: 28px;
+            height: 28px;
+          }
+
+          .portfolio-icons a:hover img.icon {
+            filter: invert(45%) sepia(100%) saturate(500%) hue-rotate(180deg);
+          }
+
+          .portfolio-item h4 {
+            margin: 10px 0 4px;
+            font-size: 1.1em;
+            text-align: left;
+            color: #37517e;
+
+          }
+
+          .portfolio-item p {
+            font-size: 0.9em;
+            color: #777;
+            text-align: left;
+          }
+
           /* ---------- 반응형 ---------- */
           @media screen and (max-width: 768px) {
-            .photo-grid {
-              column-count: 2;
+            .photo-grid.columns {
+              flex-direction: column;
+            }
+
+            .column {
+              width: 100%;
             }
           }
 
@@ -319,169 +318,153 @@
         </style>
 
         <div class="photo-grid">
-          <!-- 1 -->
           <div class="portfolio-item filter-app">
             <div class="portfolio-img">
               <img src="img/app1.webp" alt="Cactus">
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <div class="portfolio-text">
+                  <h4>App 1</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
                 <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 2 -->
-          <div class="portfolio-item filter-card">
-            <div class="portfolio-img">
-              <img src="img/product1.webp" alt="Dropper">
-              <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="portfolio-item filter-web">
-            <div class="portfolio-img">
-              <img src="img/branding1.webp" alt="Brushes">
-              <div class="portfolio-info">
-                <h4>Branding 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 4 -->
-          <div class="portfolio-item filter-app">
-            <div class="portfolio-img">
-              <img src="img/app2.webp" alt="Flatlay set">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 5 -->
-          <div class="portfolio-item filter-card">
-            <div class="portfolio-img">
-              <img src="img/product2.webp" alt="flower">
-              <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 6 -->
+
           <div class="portfolio-item filter-web">
             <div class="portfolio-img">
               <img src="img/branding2.webp" alt="markers">
               <div class="portfolio-info">
-                <h4>Branding 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <div class="portfolio-text">
+                  <h4>Branding 2</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
                 <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 7 -->
+
+          <div class="portfolio-item filter-card">
+            <div class="portfolio-img">
+              <img src="img/product1.webp" alt="Dropper">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Product 1</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item filter-app">
+            <div class="portfolio-img">
+              <img src="img/app2.webp" alt="Flatlay set">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>App 2</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="portfolio-item filter-app">
             <div class="portfolio-img">
               <img src="img/app3.webp" alt="thread">
               <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <div class="portfolio-text">
+                  <h4>App 3</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
                 <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 8 -->
+
           <div class="portfolio-item filter-card">
             <div class="portfolio-img">
               <img src="img/product3.webp" alt="black book">
               <div class="portfolio-info">
-                <h4>Product 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <div class="portfolio-text">
+                  <h4>Product 3</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
                 <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 9 -->
+
+          <div class="portfolio-item filter-web">
+            <div class="portfolio-img">
+              <img src="img/branding1.webp" alt="Brushes">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Branding 1</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item filter-card">
+            <div class="portfolio-img">
+              <img src="img/product2.webp" alt="flower">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Product 2</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="portfolio-item filter-web">
             <div class="portfolio-img">
               <img src="img/branding3.webp" alt="pencils">
               <div class="portfolio-info">
-                <h4>Branding 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
+                <div class="portfolio-text">
+                  <h4>Branding 3</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
                 <div class="portfolio-icons">
-                  <a href="#">
-                    <img src="img/zoom-in.png" alt="Zoom Icon" class="icon">
-                  </a>
-                  <a href="#">
-                    <img src="img/link-45deg.svg" alt="Link Icon" class="icon">
-                  </a>
+                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+
+      </div>
       </div>
     </section>
 
