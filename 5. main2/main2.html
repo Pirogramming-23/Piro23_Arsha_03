@@ -1,0 +1,173 @@
+<!-- html:5 tab -->
+<!-- or ! tab-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- 문서의 문자 인코딩을 UTF-8로 설정 (한글, 이모지 등 다양한 문자 지원) -->
+  <meta charset="UTF-8" />
+  <!-- Internet Explorer가 최신 렌더링 엔진을 사용하도록 지정 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- 반응형 웹을 위한 뷰포트 설정 (모바일 기기에서 적절한 크기로 표시) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--variable.css랑 reset.css 연결-->
+  <link rel="stylesheet" href="layout/variables.css" />
+  <link rel="stylesheet" href="layout/reset.css" />
+  <link rel="stylesheet" href="layout/layout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700&display=swap" rel="stylesheet">
+
+
+
+  <!--favicon 설정-->
+  <link rel="icon" type="image/png" href="transparent-favicon.png" />
+
+  <title>Arsha Bootcamp Template Demo</title>
+  <style>
+    .portfolio-section {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #37517e;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 20px;
+      padding-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ddd;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #47b2e4;
+      border-radius: 2px;
+    }
+
+    .section-desc {
+      color: #666;
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 60px;
+    }
+
+    .filters {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* input 숨김 */
+    .filters input[type="radio"] {
+      display: none;
+    }
+
+    /* label = 버튼처럼 보이게 */
+    .filters label {
+      padding: 8px 20px;
+      margin: 0 8px;
+      font-size: 14px;
+      border-radius: 50px;
+      font-weight: 500;
+      padding: 8px 20px 10px;
+      margin: 0 0 5px;
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    /* 마우스 올렸을 때 */
+    .filters label:hover {
+      background-color: #47b2e4;
+      color: white;
+    }
+
+    /* 선택된 필터 버튼 강조 */
+    .filters input[type="radio"]:checked+label {
+      background-color: #47b2e4;
+      color: white;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .portfolio-item h4 {
+      margin-top: 12px;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .portfolio-item p {
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <!--<section class="main2">main2</section>-->
+    <section class="portfolio-section">
+      <h2 class="section-title">PORTFOLIO</h2>
+      <p class="section-desc">
+        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+      </p>
+
+      <div class="filters">
+        <input type="radio" name="filter" id="all" checked>
+        <label for="all">All</label>
+
+        <input type="radio" name="filter" id="app">
+        <label for="app">App</label>
+
+        <input type="radio" name="filter" id="card">
+        <label for="card">Card</label>
+
+        <input type="radio" name="filter" id="web">
+        <label for="web">Web</label>
+      </div>
+
+
+      </div>
+    </section>
+
+  </main>
+  <footer></footer>
+</body>
+
+</html>
