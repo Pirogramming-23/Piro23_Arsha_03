@@ -1,0 +1,14 @@
+
+//// 어떤 것들이 필요한 지 몰라서 서칭해서 넣어놨는데 수정하셔도 됩니다 ! ////
+
+{
+  "editor.tabSize": 2,                      // 들여쓰기 탭 크기 설정 (2 또는 4)
+  "editor.insertSpaces": true,              // 탭 대신 스페이스 사용
+  "editor.formatOnSave": true,              // 저장 시 자동 코드 정렬
+  "files.trimTrailingWhitespace": true,     // 줄 끝 공백 자동 제거
+  "files.insertFinalNewline": true,         // 마지막 줄 자동 줄바꿈
+  "editor.wordWrap": "on",                  // 코드 줄 넘침 시 자동 줄바꿈
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  }
+}
