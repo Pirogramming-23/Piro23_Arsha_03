@@ -153,17 +153,7 @@
       </p>
 
       <div class="portfolio-wrapper">
-        <input type="radio" name="filter" id="all" checked>
-        <input type="radio" name="filter" id="app">
-        <input type="radio" name="filter" id="card">
-        <input type="radio" name="filter" id="web">
 
-        <div class="filters">
-          <label for="all">All</label>
-          <label for="app">App</label>
-          <label for="card">Card</label>
-          <label for="web">Web</label>
-        </div>
 
         <style>
           .photo-grid {
@@ -171,6 +161,7 @@
             column-gap: 24px;
             max-width: 1200px;
             margin: 0 auto;
+
             /*display: flex;
             gap: 24px;
             justify-content: center;
@@ -201,18 +192,64 @@
             transition: all 0.4s ease;*/
           }
 
-          #all:checked~.photo-grid .portfolio-item,
-          #app:checked~.photo-grid .filter-app,
-          #card:checked~.photo-grid .filter-card,
+          /* --- 모든 필터 항목의 기본 숨김 설정 --- */
+          /* photo-grid 내의 모든 필터 카테고리 요소를 기본적으로 숨깁니다.
+   opacity, transform, max-height, visibility를 사용하여 부드러운 전환 효과를 만듭니다. */
+          .photo-grid .filter-app,
+          .photo-grid .filter-card,
+          .photo-grid .filter-web {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            /* 숨겨질 때 약간 축소되고 아래로 이동하는 시각적 효과 */
+            max-height: 0;
+            /* 숨겨질 때 높이를 0으로 만들어 공간을 차지하지 않게 함 */
+            overflow: hidden;
+            /* 내용이 넘치면 숨김 처리 */
+            visibility: hidden;
+            /* 스크린 리더 등에서도 숨김 */
+            transition: all 0.6s ease-in-out;
+            /* 모든 속성 변화에 0.6초간 부드러운 전환 적용 */
+          }
+
+          /* --- 'All' 버튼 선택 시 --- */
+          /* 'all' 라디오 버튼이 선택되면, 모든 필터 카테고리(app, card, web)를 보이게 합니다. */
+          #all:checked~.photo-grid .filter-app,
+          #all:checked~.photo-grid .filter-card,
+          #all:checked~.photo-grid .filter-web {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            max-height: 1000px;
+            /* 이미지가 완전히 보이도록 충분히 큰 높이 설정 */
+            visibility: visible;
+          }
+
+          /* --- 'App' 버튼 선택 시 --- */
+          /* 'app' 라디오 버튼이 선택되면, '.filter-app' 클래스를 가진 요소들만 보이게 합니다. */
+          #app:checked~.photo-grid .filter-app {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            max-height: 1000px;
+            visibility: visible;
+          }
+
+          /* --- 'Card' 버튼 선택 시 --- */
+          /* 'card' 라디오 버튼이 선택되면, '.filter-card' 클래스를 가진 요소들만 보이게 합니다. */
+          #card:checked~.photo-grid .filter-card {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            max-height: 1000px;
+            visibility: visible;
+          }
+
+          /* --- 'Web' 버튼 선택 시 --- */
+          /* 'web' 라디오 버튼이 선택되면, '.filter-web' 클래스를 가진 요소들만 보이게 합니다. */
           #web:checked~.photo-grid .filter-web {
             opacity: 1;
             transform: scale(1) translateY(0);
             max-height: 1000px;
             visibility: visible;
-            /*display: block;
-            opacity: 1;
-            transform: scale(1);*/
           }
+
 
           .portfolio-wrapper input[type="radio"] {
             display: none;
@@ -223,15 +260,15 @@
             color: white;
           }
 
-          .portfolio-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-
           .portfolio-img {
             position: relative;
             overflow: hidden;
+          }
+
+          .portfolio-img img {
+            width: 100%;
+            height: auto;
+            display: block;
           }
 
           .portfolio-info {
@@ -299,19 +336,6 @@
             filter: invert(45%) sepia(100%) saturate(500%) hue-rotate(180deg);
           }
 
-          .portfolio-item h4 {
-            margin: 10px 0 4px;
-            font-size: 1.1em;
-            text-align: left;
-            color: #37517e;
-
-          }
-
-          .portfolio-item p {
-            font-size: 0.9em;
-            color: #777;
-            text-align: left;
-          }
 
           /* ---------- 반응형 ---------- */
           @media screen and (max-width: 768px) {
@@ -331,8 +355,20 @@
           }
         </style>
 
+        <input type="radio" name="filter" id="all" checked>
+        <label for="all">All</label>
+
+        <input type="radio" name="filter" id="app">
+        <label for="app">App</label>
+
+        <input type="radio" name="filter" id="card">
+        <label for="card">Card</label>
+
+        <input type="radio" name="filter" id="web">
+        <label for="web">Web</label>
+
         <div class="photo-grid">
-          <div class="portfolio-item filter-app">
+          <div class="filter-app">
             <div class="portfolio-img">
               <img src="img/app1.webp" alt="Cactus">
               <div class="portfolio-info">
@@ -348,7 +384,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-web">
+          <div class="filter-web">
             <div class="portfolio-img">
               <img src="img/branding2.webp" alt="markers">
               <div class="portfolio-info">
@@ -364,7 +400,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-card">
+          <div class="filter-card">
             <div class="portfolio-img">
               <img src="img/product1.webp" alt="Dropper">
               <div class="portfolio-info">
@@ -380,7 +416,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-app">
+          <div class="filter-app">
             <div class="portfolio-img">
               <img src="img/app2.webp" alt="Flatlay set">
               <div class="portfolio-info">
@@ -396,7 +432,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-app">
+          <div class="filter-app">
             <div class="portfolio-img">
               <img src="img/app3.webp" alt="thread">
               <div class="portfolio-info">
@@ -412,7 +448,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-card">
+          <div class="filter-card">
             <div class="portfolio-img">
               <img src="img/product3.webp" alt="black book">
               <div class="portfolio-info">
@@ -428,7 +464,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-web">
+          <div class="filter-web">
             <div class="portfolio-img">
               <img src="img/branding1.webp" alt="Brushes">
               <div class="portfolio-info">
@@ -444,7 +480,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-card">
+          <div class="filter-card">
             <div class="portfolio-img">
               <img src="img/product2.webp" alt="flower">
               <div class="portfolio-info">
@@ -460,7 +496,7 @@
             </div>
           </div>
 
-          <div class="portfolio-item filter-web">
+          <div class="filter-web">
             <div class="portfolio-img">
               <img src="img/branding3.webp" alt="pencils">
               <div class="portfolio-info">
@@ -482,23 +518,45 @@
         .lightbox {
           display: none;
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.85);
+          inset: 0;
+          width: 100vw;
+          height: 100vh;
+          padding: 0;
+          margin: 0;
+          background: rgba(0, 0, 0, 0.95);
           z-index: 1000;
           text-align: center;
-          padding-top: 60px;
+          box-sizing: border-box;
+          overflow: hidden;
         }
 
         .lightbox:target {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
 
-        .lightbox img {
-          max-width: 80vw;
-          max-height: 80vh;
+        .lightbox-content {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: flex-end;
+          max-width: 90vw;
+          /*height: 100vh;*/
+          margin: 0;
+          padding: 0;
+        }
+
+        .lightbox-content img {
+          flex: 1;
+          max-height: 90vh;
+          width: 100%;
+          object-fit: contain;
+          display: block;
+          margin: 0;
+          padding: 0;
+          /*border-bottom: none;*/
         }
 
         .lightbox .close,
@@ -512,39 +570,107 @@
           text-decoration: none;
         }
 
+        .lightbox-description {
+          background: white;
+          color: black;
+          font-size: 18px;
+          text-align: left;
+          padding: 16px 24px;
+          height: 80px;
+          box-sizing: border-box;
+          margin: 0;
+          line-height: 1.4;
+          font-weight: 500;
+        }
+
+        .lightbox .close,
+        .lightbox .prev,
+        .lightbox .next {
+          color: rgba(255, 255, 255, 0.4);
+          font-size: 40px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          text-decoration: none;
+          transition: color 0.3s ease;
+          user-select: none;
+          background-color: rgba(0, 0, 0, 0.95);
+          border-radius: 8px;
+        }
+
         .lightbox .close {
           top: 20px;
           right: 30px;
           transform: none;
+          font-size: 36px;
+          color: white;
         }
 
         .lightbox .prev {
-          left: 30px;
+          left: 20px;
         }
 
         .lightbox .next {
-          right: 30px;
+          right: 20px;
+        }
+
+        .lightbox .prev:hover,
+        .lightbox .next:hover,
+        .lightbox .close:hover {
+          color: white;
+        }
+
+        #modal-app1:target .prev,
+        #modal-app3:target .next,
+        #modal-product1:target .prev,
+        #modal-product3:target .next,
+        #modal-branding1:target .prev,
+        #modal-branding3:target .next {
+          display: none;
+        }
+
+        @media (max-width: 600px) {
+          .lightbox-description {
+            font-size: 16px;
+            padding: 12px 16px;
+            height: auto;
+          }
+
+          .lightbox .close,
+          .lightbox .prev,
+          .lightbox .next {
+            font-size: 32px;
+          }
         }
       </style>
 
       <!--app 사진 넘기기-->
       <div class="lightbox" id="modal-app1">
         <a href="#modal-app3" class="prev">&#10094;</a>
-        <img src="img/app1.webp" alt="App 1">
+        <div class="lightbox-content">
+          <img src="img/app1.webp" alt="App 1">
+          <div class="lightbox-description">App 1</div>
+        </div>
         <a href="#modal-app2" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
 
       <div class="lightbox" id="modal-app2">
         <a href="#modal-app1" class="prev">&#10094;</a>
-        <img src="img/app2.webp" alt="App 2">
+        <div class="lightbox-content">
+          <img src="img/app2.webp" alt="App 2">
+          <div class="lightbox-description">App 2</div>
+        </div>
         <a href="#modal-app3" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
 
       <div class="lightbox" id="modal-app3">
         <a href="#modal-app2" class="prev">&#10094;</a>
-        <img src="img/app3.webp" alt="App 3">
+        <div class="lightbox-content">
+          <img src="img/app3.webp" alt="App 3">
+          <div class="lightbox-description">App 3</div>
+        </div>
         <a href="#modal-app1" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
@@ -552,21 +678,30 @@
       <!--product 사진 넘기기-->
       <div class="lightbox" id="modal-product1">
         <a href="#modal-product3" class="prev">&#10094;</a>
-        <img src="img/product1.webp" alt="Product 1">
+        <div class="lightbox-content">
+          <img src="img/product1.webp" alt="Product 1">
+          <div class="lightbox-description">Product 1</div>
+        </div>
         <a href="#modal-product2" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
 
       <div class="lightbox" id="modal-product2">
         <a href="#modal-product1" class="prev">&#10094;</a>
-        <img src="img/product2.webp" alt="Product 2">
+        <div class="lightbox-content">
+          <img src="img/product2.webp" alt="Product 2">
+          <div class="lightbox-description">Product 2</div>
+        </div>
         <a href="#modal-product3" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
 
       <div class="lightbox" id="modal-product3">
         <a href="#modal-product2" class="prev">&#10094;</a>
-        <img src="img/product3.webp" alt="Product 3">
+        <div class="lightbox-content">
+          <img src="img/product3.webp" alt="Product 3">
+          <div class="lightbox-description">Product 3</div>
+        </div>
         <a href="#modal-product1" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
@@ -574,21 +709,30 @@
       <!--branding 사진 넘기기-->
       <div class="lightbox" id="modal-branding1">
         <a href="#modal-branding3" class="prev">&#10094;</a>
-        <img src="img/branding1.webp" alt="Branding 1">
+        <div class="lightbox-content">
+          <img src="img/branding1.webp" alt="Branding 1">
+          <div class="lightbox-description">Branding 1</div>
+        </div>
         <a href="#modal-branding2" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
 
       <div class="lightbox" id="modal-branding2">
         <a href="#modal-branding1" class="prev">&#10094;</a>
-        <img src="img/branding2.webp" alt="Branding 2">
+        <div class="lightbox-content">
+          <img src="img/branding2.webp" alt="Branding 2">
+          <div class="lightbox-description">Branding 2</div>
+        </div>
         <a href="#modal-branding3" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
 
       <div class="lightbox" id="modal-branding3">
         <a href="#modal-branding2" class="prev">&#10094;</a>
-        <img src="img/branding3.webp" alt="Branding 3">
+        <div class="lightbox-content">
+          <img src="img/branding3.webp" alt="Branding 3">
+          <div class="lightbox-description">Branding 3</div>
+        </div>
         <a href="#modal-branding1" class="next">&#10095;</a>
         <a href="#" class="close">&times;</a>
       </div>
