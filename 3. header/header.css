@@ -566,7 +566,7 @@
 
 
   
-  /*
+  
   .index-navbar .dropdown ul .dropdown > ul,
   .navmenu .dropdown ul .dropdown > ul {
     left: -90%;
@@ -584,7 +584,7 @@
     visibility: visible;
     transform: translateX(0);
   }
-  */
+ 
 
   .index .index-header .nav-group .index-navbar li:last-child a {
     padding-right: 0;
