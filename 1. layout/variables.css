@@ -31,6 +31,15 @@
 
     --swiper-navigation-size: 44px;
     --swiper-theme-color: #007aff;
+
+    --real-slide-count: 4;
+    /* 실제 보여주고 싶은 슬라이드 개수 */
+    --slide-count: calc(var(--real-slide-count) + 1);
+    /* 실제 + 더미 슬라이드 */
+    --slide-duration: 5s;
+    /* 각 슬라이드가 보여지는 시간 */
+    --total-animation-duration: calc(var(--slide-count) * var(--slide-duration));
+    /* 전체 애니메이션 시간 */
 }
 
 

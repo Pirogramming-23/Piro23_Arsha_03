@@ -13,7 +13,8 @@
 #Team-header,
 #Pricing-header,
 #Blog-header,
-#Ask-header {
+#Ask-header,
+#TESTIMONIALS-header {
     box-sizing: border-box;
     display: block;
     align-items: flex-start;
@@ -33,7 +34,8 @@
 #Team-header h2,
 #Pricing-header h2,
 #Blog-header h2,
-#Ask-header h2 {
+#Ask-header h2,
+#TESTIMONIALS-header h2 {
     font-family: var(--heading-font);
     font-size: 32px;
     font-weight: 700;
@@ -48,7 +50,8 @@
 #Team-header h2::before,
 #Pricing-header h2::before,
 #Blog-header h2::before,
-#Ask-header h2::before {
+#Ask-header h2::before,
+#TESTIMONIALS-header h2::before {
     content: "";
     position: absolute;
     display: block;
@@ -65,7 +68,8 @@
 #Team-header h2::after,
 #Pricing-header h2::after,
 #Blog-header h2::after,
-#Ask-header h2::after {
+#Ask-header h2::after,
+#TESTIMONIALS-header h2::after {
     content: "";
     position: absolute;
     display: block;
@@ -82,7 +86,8 @@
 #Team-short,
 #Pricing-short,
 #Blog-short,
-#Ask-short {
+#Ask-short,
+#TESTIMONIALS-short {
     text-align: center;
     position: relative;
     margin-top: 0;
@@ -790,10 +795,224 @@
     flex: 0 0 400px;
     text-align: center;
     align-self: flex-end;
+    height: 100%;
 }
 
 .subscribe__img img {
     max-width: 100%;
-    height: auto;
+    height: 100%;
     display: inline-block;
+}
+
+:root {
+    --primary: #47b2e4;
+    --text: #333;
+    --sub: #777;
+    --light-bg: #f9fbfd;
+    --dot-off: #ddd;
+    --dot-on: var(--primary);
+    --slide-time: 4s;
+    --count: 5;
+    --total: calc(var(--slide-time) * var(--count));
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    color: var(--text);
+    background: var(--light-bg);
+}
+
+#testimonials {
+    background-color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+
+.slides-wrapper {
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 300px;
+    overflow: hidden;
+}
+
+/* 공통 슬라이드 스타일 */
+.slide {
+    justify-items: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 800px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: slideFade var(--total) infinite;
+    transition: opacity 0.6s ease;
+    border: none;
+    box-shadow: none;
+}
+
+.slide:nth-child(1) {
+    animation-delay: calc(var(--slide-time) * 0);
+}
+
+.slide:nth-child(2) {
+    animation-delay: calc(var(--slide-time) * 1);
+}
+
+.slide:nth-child(3) {
+    animation-delay: calc(var(--slide-time) * 2);
+}
+
+.slide:nth-child(4) {
+    animation-delay: calc(var(--slide-time) * 3);
+}
+
+.slide:nth-child(5) {
+    animation-delay: calc(var(--slide-time) * 4);
+}
+
+/* 페이드 인/아웃 키프레임 */
+@keyframes slideFade {
+
+    /* 0%~19.99%: 보이지 않음 → 20%~39.99%: 페이드 인 → 40%~100%: 페이드 아웃 */
+    0%,
+    19.99% {
+        opacity: 0;
+    }
+
+    20%,
+    39.99% {
+        opacity: 1;
+    }
+
+    40%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #eee;
+    margin: 0 auto 16px;
+}
+
+.slide h3 {
+    margin-bottom: 4px;
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.slide h4 {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: var(--sub);
+}
+
+.stars {
+    font-size: 1.2rem;
+    color: #f5b301;
+    margin-bottom: 16px;
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 10px;
+    font-weight: 100;
+    color: var(--text);
+    line-height: 1.6;
+    position: relative;
+    padding: 0 20px;
+}
+
+blockquote::before,
+blockquote::after {
+    content: '“';
+    font-size: 4rem;
+    color: #47b2e4;
+    position: absolute;
+    line-height: 1;
+}
+
+blockquote::before {
+    top: -10px;
+    left: -10px;
+}
+
+blockquote::after {
+    content: '”';
+    top: -10px;
+    right: 5px;
+}
+
+.dots {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--dot-off);
+    animation: dotFlash var(--total) infinite;
+}
+
+.dots .dot:nth-child(1) {
+    animation-delay: calc(var(--slide-time) * 0);
+}
+
+.dots .dot:nth-child(2) {
+    animation-delay: calc(var(--slide-time) * 1);
+}
+
+.dots .dot:nth-child(3) {
+    animation-delay: calc(var(--slide-time) * 2);
+}
+
+.dots .dot:nth-child(4) {
+    animation-delay: calc(var(--slide-time) * 3);
+}
+
+.dots .dot:nth-child(5) {
+    animation-delay: calc(var(--slide-time) * 4);
+}
+
+@keyframes dotFlash {
+
+    0%,
+    19.99% {
+        background: var(--dot-off);
+    }
+
+    20%,
+    39.99% {
+        background: var(--dot-on);
+    }
+
+    40%,
+    100% {
+        background: var(--dot-off);
+    }
 }
