@@ -165,7 +165,7 @@
   #preview {
     height: 2000px;
     background-color: yellow;
-    overflow-y: auto;
+    /* overflow-y: auto; */
   }
   
   .header-left {
@@ -343,7 +343,23 @@
     top: 32px;
     right: 0;
     left: 0;
-    
+  }
+
+  /* 스크롤 감지를 위한 sticky 요소 */
+  .scroll-detector {
+    position: sticky;
+    top: 90px; /* 헤더 높이 + 상단 헤더 높이 */
+    z-index: 996;
+    height: 1px;
+    background: transparent;
+  }
+
+  /* scroll-detector가 화면에서 사라질 때 헤더 색상 변경 */
+  .scroll-detector:not(:in-viewport) ~ .index-header,
+  .scroll-detector:not(:in-viewport) + .index-header {
+    background-color: rgba(61, 77, 106, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   }
   
   .index .index-header .container {
@@ -1107,6 +1123,135 @@
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+  }
+  
+  /* ========================================
+     CLIENTS SECTION
+  ========================================= */
+  
+  /* 클라이언트 섹션 기본 스타일 */
+  .index .clients {
+    padding: 12px 0;
+    background-color: #f5f6f8;
+    overflow: clip;
+  }
+
+  .clients .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  /* 클라이언트 래퍼 */
+  .clients .clients-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 120px;
+    padding: 10px 0;
+    touch-action: pan-y;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  /* 기존 slideLeft 애니메이션 삭제 및 swiperSmoothSnap으로 교체 */
+  @keyframes swiperBounceSnap {
+    0%      { transform: translateX(0); }
+    2.5%    { transform: translateX(-12.5%); }   /* 0~2.5%: 이동(0.4초) */
+    12.5%   { transform: translateX(-12.5%); }   /* 2.5~12.5%: 멈춤(1.6초) */
+    15%     { transform: translateX(-25%); }
+    25%     { transform: translateX(-25%); }
+    27.5%   { transform: translateX(-37.5%); }
+    37.5%   { transform: translateX(-37.5%); }
+    40%     { transform: translateX(-50%); }
+    50%     { transform: translateX(-50%); }
+    52.5%   { transform: translateX(-62.5%); }
+    62.5%   { transform: translateX(-62.5%); }
+    65%     { transform: translateX(-75%); }
+    75%     { transform: translateX(-75%); }
+    77.5%   { transform: translateX(-87.5%); }
+    87.5%   { transform: translateX(-87.5%); }
+    90%     { transform: translateX(-100%); }
+    100%    { transform: translateX(-100%); }
+  }
+
+  .clients .clients-wrapper {
+    animation: swiperBounceSnap 16s cubic-bezier(.77,0,.18,1) infinite;
+  }
+
+  /* 호버 시 애니메이션 일시정지 */
+  .clients .clients-wrapper:hover {
+    animation-play-state: paused;
+  }
+
+  /* 개별 클라이언트 아이템 */
+  .clients .client-item {
+    flex: 0 0 auto;
+    width: 160px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  /* 이미지 스타일 */
+  .clients .client-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: 0.3s;
+  }
+
+  /* 호버 효과 - 원본과 동일하게 scale만 적용 */
+  .clients .client-item img:hover {
+    transform: scale(1.1);
+  }
+
+  /* 반응형 디자인 */
+  @media (max-width: 1200px) {
+    .clients .clients-wrapper {
+      gap: 80px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .clients .clients-wrapper {
+      gap: 60px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .clients .clients-wrapper {
+      gap: 40px;
+    }
+    
+    .clients .client-item {
+      width: 100px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .clients .clients-wrapper {
+      gap: 30px;
+    }
+    
+    .clients .client-item {
+      width: 80px;
+    }
+  }
+
+  /* AOS 애니메이션 효과 (CSS만으로 구현) */
+  .clients .aos-init {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+  }
+
+  .clients .aos-animate {
+    opacity: 1;
+    transform: scale(1);
   }
   
   
