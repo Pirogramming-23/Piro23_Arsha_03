@@ -120,15 +120,21 @@
 .footer-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-between;
+  /* gap: 30px; 제거 또는 조정 - 필요에 따라 섹션 간의 간격을 조절합니다. */
+  /* justify-content: space-between; 대신 flex-start 또는 gap으로 조절 */
+  justify-content: flex-start;
+  /* 모든 섹션을 왼쪽으로 정렬하여 뭉치도록 합니다. */
+  gap: 60px;
+  /* 섹션 간의 기본 간격 설정 */
   margin-bottom: 40px;
 }
 
 /* 회사 정보 */
 .Arsha {
-  flex: 1;
+  /* flex: 1; 이 있으면 유동적으로 공간을 차지하므로, 고정 너비나 min-width를 고려 */
+  /* 필요에 따라 min-width 대신 고정 width를 줄 수도 있습니다. */
   min-width: 200px;
+  /* flex-shrink: 0; 추가하여 압축되지 않도록 할 수 있습니다. */
 }
 
 .Arsha-title h2 {
@@ -143,8 +149,9 @@
 
 
 .footer-usuful-links {
-  flex: 1;
-  min-width: 200px;
+  /* flex: 1; 이 있으면 유동적으로 공간을 차지하므로, 고정 너비나 min-width를 고려 */
+  min-width: 150px;
+  /* Useful Links의 최소 너비를 조정하여 더 가깝게 */
 }
 
 .footer-usuful-links h3 {
@@ -181,8 +188,9 @@
 
 /* 서비스 영역 */
 .footer-our-services {
-  flex: 1;
-  min-width: 200px;
+  /* flex: 1; 이 있으면 유동적으로 공간을 차지하므로, 고정 너비나 min-width를 고려 */
+  min-width: 180px;
+  /* Our Services의 최소 너비를 조정하여 더 가깝게 */
 }
 
 .footer-our-services h4 {
@@ -212,7 +220,7 @@
 
 
 .footer-follow {
-  flex: 1;
+  /* flex: 1; 이 있으면 유동적으로 공간을 차지하므로, 고정 너비나 min-width를 고려 */
   min-width: 200px;
 }
 
@@ -223,13 +231,20 @@
   font-weight: bold;
 }
 
-.icons a {
-  display: inline-block;
-  margin-right: 10px;
-  color: #777;
-  font-size: 20px;
-  transition: 0.3s;
+.icons {
   display: flex;
+  /* 아이콘들을 가로로 나열하기 위해 flexbox 사용 */
+  flex-direction: row;
+  /* 아이콘을 가로(row) 방향으로 정렬합니다. */
+  gap: 10px;
+  /* 아이콘들 사이의 간격 설정 */
+  flex-wrap: wrap;
+  /* 공간이 부족할 경우 줄바꿈 허용 */
+}
+
+.icons a {
+  display: flex;
+  /* 각 아이콘을 flex item으로 설정 */
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -237,10 +252,9 @@
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 16px;
-  color:
-    color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
   transition: 0.3s;
+  /* margin-right: 10px; 기존 margin-right 대신 gap 속성으로 대체 가능 */
 }
 
 .icons a:hover {
