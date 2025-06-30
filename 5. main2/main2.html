@@ -1,0 +1,307 @@
+<!-- html:5 tab -->
+<!-- or ! tab-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- 문서의 문자 인코딩을 UTF-8로 설정 (한글, 이모지 등 다양한 문자 지원) -->
+  <meta charset="UTF-8" />
+  <!-- Internet Explorer가 최신 렌더링 엔진을 사용하도록 지정 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- 반응형 웹을 위한 뷰포트 설정 (모바일 기기에서 적절한 크기로 표시) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--variable.css랑 reset.css 연결-->
+  <link rel="stylesheet" href="layout/variables.css" />
+  <link rel="stylesheet" href="layout/reset.css" />
+  <link rel="stylesheet" href="layout/layout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main2.css" />
+
+  <!--favicon 설정-->
+  <link rel="icon" type="image/png" href="transparent-favicon.png" />
+
+  <title>Arsha Bootcamp Template Demo</title>
+
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <!--<section class="main2">main2</section>-->
+    <section class="portfolio-section">
+      <h2 class="section-title">PORTFOLIO</h2>
+      <p class="section-desc">
+        Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
+      </p>
+
+      <div class="portfolio-wrapper">
+
+
+        <input type="radio" name="filter" id="all" checked>
+        <label for="all">All</label>
+
+        <input type="radio" name="filter" id="app">
+        <label for="app">App</label>
+
+        <input type="radio" name="filter" id="card">
+        <label for="card">Card</label>
+
+        <input type="radio" name="filter" id="web">
+        <label for="web">Web</label>
+
+        <div class="photo-grid">
+          <div class="filter-app">
+            <div class="portfolio-img">
+              <img src="img/app1.webp" alt="Cactus">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>App 1</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-app1"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-web">
+            <div class="portfolio-img">
+              <img src="img/branding2.webp" alt="markers">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Branding 2</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-branding2"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-card">
+            <div class="portfolio-img">
+              <img src="img/product1.webp" alt="Dropper">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Product 1</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-product1"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-app">
+            <div class="portfolio-img">
+              <img src="img/app2.webp" alt="Flatlay set">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>App 2</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-app2"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-app">
+            <div class="portfolio-img">
+              <img src="img/app3.webp" alt="thread">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>App 3</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-app3"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="filter-web">
+            <div class="portfolio-img">
+              <img src="img/branding3.webp" alt="pencils">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Branding 3</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-branding3"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="filter-card">
+            <div class="portfolio-img">
+              <img src="img/product3.webp" alt="black book">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Product 3</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-product3"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-card">
+            <div class="portfolio-img">
+              <img src="img/product2.webp" alt="flower">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Product 2</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-product2"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-web">
+            <div class="portfolio-img">
+              <img src="img/branding1.webp" alt="Brushes">
+              <div class="portfolio-info">
+                <div class="portfolio-text">
+                  <h4>Branding 1</h4>
+                  <p>Lorem ipsum, dolor sit</p>
+                </div>
+                <div class="portfolio-icons">
+                  <a href="#modal-branding1"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+      </div>
+
+      <!--app 사진 넘기기-->
+      <div class="lightbox" id="modal-app1">
+        <a href="#modal-app3" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/app1.webp" alt="App 1">
+          <div class="lightbox-description">App 1</div>
+        </div>
+        <a href="#modal-app2" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-app2">
+        <a href="#modal-app1" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/app2.webp" alt="App 2">
+          <div class="lightbox-description">App 2</div>
+        </div>
+        <a href="#modal-app3" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-app3">
+        <a href="#modal-app2" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/app3.webp" alt="App 3">
+          <div class="lightbox-description">App 3</div>
+        </div>
+        <a href="#modal-app1" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <!--product 사진 넘기기-->
+      <div class="lightbox" id="modal-product1">
+        <a href="#modal-product3" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/product1.webp" alt="Product 1">
+          <div class="lightbox-description">Product 1</div>
+        </div>
+        <a href="#modal-product2" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-product2">
+        <a href="#modal-product1" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/product2.webp" alt="Product 2">
+          <div class="lightbox-description">Product 2</div>
+        </div>
+        <a href="#modal-product3" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-product3">
+        <a href="#modal-product2" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/product3.webp" alt="Product 3">
+          <div class="lightbox-description">Product 3</div>
+        </div>
+        <a href="#modal-product1" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <!--branding 사진 넘기기-->
+      <div class="lightbox" id="modal-branding1">
+        <a href="#modal-branding3" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/branding1.webp" alt="Branding 1">
+          <div class="lightbox-description">Branding 1</div>
+        </div>
+        <a href="#modal-branding2" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-branding2">
+        <a href="#modal-branding1" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/branding2.webp" alt="Branding 2">
+          <div class="lightbox-description">Branding 2</div>
+        </div>
+        <a href="#modal-branding3" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-branding3">
+        <a href="#modal-branding2" class="prev">&#10094;</a>
+        <div class="lightbox-content">
+          <img src="img/branding3.webp" alt="Branding 3">
+          <div class="lightbox-description">Branding 3</div>
+        </div>
+        <a href="#modal-branding1" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+</body>
+
+</html>

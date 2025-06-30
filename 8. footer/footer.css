@@ -1,0 +1,255 @@
+:root {
+  --background-color: #ffffff;
+  --default-color: #444444;
+  --heading-color: #37517e;
+  --accent-color: #47b2e4;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+}
+
+:root {
+  --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Jost", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
+
+:root {
+  --swiper-navigation-size: 44px;
+}
+
+:root {
+  --swiper-theme-color: #007aff;
+}
+
+:root,
+[data-bs-theme=light] {
+  --bs-carousel-indicator-active-bg: #fff;
+  --bs-carousel-caption-color: #fff;
+  --bs-carousel-control-icon-filter: ;
+}
+
+:root,
+[data-bs-theme=light] {
+  --bs-btn-close-filter: ;
+}
+
+:root {
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 992px;
+  --bs-breakpoint-xl: 1200px;
+  --bs-breakpoint-xxl: 1400px;
+}
+
+.newsletter-section {
+  background-color: #f5f6f8;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.newsletter-section h1 {
+  font-size: 24px;
+  color: #37517e;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.newsletter-section p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  color: #5e5e5e;
+}
+
+.newsletter-section form {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 9999px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  height: 50px;
+}
+
+.newsletter-section input {
+  flex: 1;
+  border: none;
+  padding: 0 20px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
+  color: #444;
+}
+
+.newsletter-section input:focus {
+  outline: none;
+  border: none;
+}
+
+.newsletter-section button {
+  background-color: #47b2e4;
+  color: #fff;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 100%;
+  border-radius: 0;
+}
+
+.newsletter-section button:hover {
+  background-color: #63bde7;
+}
+
+
+.Arsha-footer {
+  background-color: #fff;
+  color: #444;
+  padding-top: 60px;
+}
+
+.container-footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+/* 회사 정보 */
+.Arsha {
+  flex: 1;
+  min-width: 200px;
+}
+
+.Arsha-title h2 {
+  font-size: 24px;
+  color: #37517e;
+  margin-bottom: 10px;
+}
+
+.Arsha p {
+  margin: 5px 0;
+}
+
+
+.footer-usuful-links {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-usuful-links h3 {
+  font-size: 18px;
+  color: #37517e;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-usuful-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-usuful-links li {
+  margin-bottom: 10px;
+}
+
+.footer-usuful-links a {
+  color: #777;
+  text-decoration: none;
+}
+
+.arrow {
+  color: #209dd8;
+  /* 원하는 파란색 */
+  margin-right: 6px;
+  /* › 기호와 텍스트 사이 여백 */
+}
+
+.footer-usuful-links a:hover {
+  color: #209dd8;
+}
+
+/* 서비스 영역 */
+.footer-our-services {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-our-services h4 {
+  font-size: 18px;
+  color: #37517e;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-our-services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-our-services li {
+  margin-bottom: 10px;
+}
+
+.footer-our-services a {
+  color: #777;
+  text-decoration: none;
+}
+
+.footer-our-services a:hover {
+  color: #209dd8;
+}
+
+
+.footer-follow {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-follow h5 {
+  font-size: 18px;
+  color: #37517e;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.icons a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #777;
+  font-size: 20px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+  color:
+    color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.icons a:hover {
+  color: #209dd8;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
