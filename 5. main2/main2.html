@@ -74,7 +74,10 @@
     }
 
     .filters {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-bottom: 30px;
     }
 
@@ -85,6 +88,7 @@
 
     /* label = 버튼처럼 보이게 */
     .filters label {
+      display: inline-block;
       padding: 8px 20px;
       margin: 0 8px;
       font-size: 14px;
@@ -182,22 +186,32 @@
           }
 
           .portfolio-item {
-            break-inside: avoid;
-            margin-bottom: 24px;
-            /*width: 100%;*/
-            display: none;
             opacity: 0;
-            transform: scale;
-            transition: all 0.4s ease;
+            transform: scale(0.95) translateY(20px);
+            max-height: 0;
+            visibility: hidden;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            margin-bottom: 24px;
+            break-inside: avoid;
+            /*width: 100%;*/
+            /*display: none;
+            opacity: 0;
+            transform: scale(1);
+            transition: all 0.4s ease;*/
           }
 
           #all:checked~.photo-grid .portfolio-item,
           #app:checked~.photo-grid .filter-app,
           #card:checked~.photo-grid .filter-card,
           #web:checked~.photo-grid .filter-web {
-            display: block;
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) translateY(0);
+            max-height: 1000px;
+            visibility: visible;
+            /*display: block;
+            opacity: 1;
+            transform: scale(1);*/
           }
 
           .portfolio-wrapper input[type="radio"] {
@@ -327,7 +341,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-app1"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -343,7 +357,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-branding2"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -359,7 +373,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-product1"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -375,7 +389,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-app2"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -391,7 +405,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-app3"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -407,7 +421,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-product3"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -423,7 +437,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-branding1"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -439,7 +453,7 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-product2"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
@@ -455,19 +469,130 @@
                   <p>Lorem ipsum, dolor sit</p>
                 </div>
                 <div class="portfolio-icons">
-                  <a href="#"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
+                  <a href="#modal-branding3"><img src="img/zoom-in.svg" class="icon" alt="Zoom"></a>
                   <a href="#"><img src="img/link-45deg.svg" class="icon" alt="Link"></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
+
+      <style>
+        .lightbox {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.85);
+          z-index: 1000;
+          text-align: center;
+          padding-top: 60px;
+        }
+
+        .lightbox:target {
+          display: block;
+        }
+
+        .lightbox img {
+          max-width: 80vw;
+          max-height: 80vh;
+        }
+
+        .lightbox .close,
+        .lightbox .prev,
+        .lightbox .next {
+          color: white;
+          font-size: 36px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          text-decoration: none;
+        }
+
+        .lightbox .close {
+          top: 20px;
+          right: 30px;
+          transform: none;
+        }
+
+        .lightbox .prev {
+          left: 30px;
+        }
+
+        .lightbox .next {
+          right: 30px;
+        }
+      </style>
+
+      <!--app 사진 넘기기-->
+      <div class="lightbox" id="modal-app1">
+        <a href="#modal-app3" class="prev">&#10094;</a>
+        <img src="img/app1.webp" alt="App 1">
+        <a href="#modal-app2" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-app2">
+        <a href="#modal-app1" class="prev">&#10094;</a>
+        <img src="img/app2.webp" alt="App 2">
+        <a href="#modal-app3" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-app3">
+        <a href="#modal-app2" class="prev">&#10094;</a>
+        <img src="img/app3.webp" alt="App 3">
+        <a href="#modal-app1" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <!--product 사진 넘기기-->
+      <div class="lightbox" id="modal-product1">
+        <a href="#modal-product3" class="prev">&#10094;</a>
+        <img src="img/product1.webp" alt="Product 1">
+        <a href="#modal-product2" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-product2">
+        <a href="#modal-product1" class="prev">&#10094;</a>
+        <img src="img/product2.webp" alt="Product 2">
+        <a href="#modal-product3" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-product3">
+        <a href="#modal-product2" class="prev">&#10094;</a>
+        <img src="img/product3.webp" alt="Product 3">
+        <a href="#modal-product1" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <!--branding 사진 넘기기-->
+      <div class="lightbox" id="modal-branding1">
+        <a href="#modal-branding3" class="prev">&#10094;</a>
+        <img src="img/branding1.webp" alt="Branding 1">
+        <a href="#modal-branding2" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-branding2">
+        <a href="#modal-branding1" class="prev">&#10094;</a>
+        <img src="img/branding2.webp" alt="Branding 2">
+        <a href="#modal-branding3" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
+      </div>
+
+      <div class="lightbox" id="modal-branding3">
+        <a href="#modal-branding2" class="prev">&#10094;</a>
+        <img src="img/branding3.webp" alt="Branding 3">
+        <a href="#modal-branding1" class="next">&#10095;</a>
+        <a href="#" class="close">&times;</a>
       </div>
     </section>
-
   </main>
   <footer></footer>
 </body>
