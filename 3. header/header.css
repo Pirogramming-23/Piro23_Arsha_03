@@ -350,7 +350,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1296px;
     margin: 0 auto;
     padding: 0 12px;
     height: 58.5px;
@@ -528,12 +527,20 @@
   .right-group .btn-getstarted {
     margin-left: 30px;
   }
-  
-  
+
+
+  /* hero */
+  .index .section {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 60px 0;
+    scroll-margin-top: 88px;
+    overflow: clip;
+  }
   
   .index .hero {
     width: 100%;
-    min-height: 80vh;
+    min-height: 883.4px;
     position: relative;
     padding: 152px 0 60px 0;
     display: flex;
@@ -541,11 +548,12 @@
     background: #37517e;
     color: #fff;
   }
-  
+
+
   .index .hero .container-fluid {
     --bs-gutter-y: 1.5rem;
     --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
+    --bs-gutter-y: 1.5rem;
     display: flex;
     flex-wrap: nowrap;
     margin-top: calc(-1 * var(--bs-gutter-y));
@@ -561,7 +569,7 @@
     display: flex !important;
     padding-left: 12px;
     padding-right: 12px;
-  
+    margin-top: 24px;
   }
   
   .index .hero h1 {
@@ -667,6 +675,7 @@
   
   .index .hero .hero-img {
     transition-delay: .2s;
+    margin-top: 24px;
   }
   .index .hero .hero-img img {
     max-width: 636px;
@@ -676,7 +685,7 @@
   /* Bootstrap-like layout utilities for hero section */
   .container {
     width: 100%;
-    max-width: 1296px;
+    max-width: 1320px;
     margin-right: auto;
     margin-left: auto;
     padding-right: 12px;
@@ -719,6 +728,22 @@
   }
   .row.gy-4 {
     margin-bottom: -1.5rem;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-animate {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.2s forwards;
   }
   
   
