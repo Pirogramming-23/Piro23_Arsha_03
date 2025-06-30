@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact</title>
   <link rel="stylesheet" href="main4.css" />
 </head>
@@ -20,77 +20,74 @@
       <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
     </div>
 
-    <div class="container-animation">
-      <div class="contact-details">
-        <div class="row1">
-          <div class="info-wrap">
-            <div class="info-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt"
-                viewBox="0 0 16 16">
-                <path
-                  d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
-                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-              </svg>
-              <div>
-                <h4>Address</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
+    <div class="contact-wrapper">
+      <div class="wrapper-line">
+        <div class="line blue"></div>
+        <!-- 왼쪽 연락처 정보 -->
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="icon">
+              <img src="geo-alt.svg" alt="Location" />
             </div>
-            <div class="contact-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telephone"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58z" />
-              </svg>
-              <div>
-                <h4>Call Us</h4>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope"
-                viewBox="0 0 16 16">
-                <path
-                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1z" />
-              </svg>
-              <div>
-                <h4>Email Us</h4>
-                <p>info@example.com</p>
-              </div>
-            </div>
-
-            <div class="contact-map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.3614657904004!2d-74.00871262407786!3d40.7100585713939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown.%20Conference%20Center!5e0!3m2!1sko!2skr!4v1751257869410!5m2!1sko!2skr"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="contact-text">
+              <h3>Address</h3>
+              <p>A108 Adam Street, New York, NY 535022</p>
             </div>
           </div>
 
-          <div class="contact-form">
-            <form>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Your Name</label>
-                  <input type="text" id="name" name="name">
-                </div>
-                <div class="form-group">
-                  <label for="email">Your Email</label>
-                  <input type="email" id="email" name="email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject">
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="10"></textarea>
-              </div>
-              <button type="submit" class="send-message-btn">Send Message</button>
-            </form>
+          <div class="contact-item">
+            <div class="icon">
+              <img src="telephone.svg" alt="Call" />
+            </div>
+            <div class="contact-text">
+              <h3>Call Us</h3>
+              <p>+1 5589 55488 55</p>
+            </div>
           </div>
+
+          <div class="contact-item">
+            <div class="icon">
+              <img src="envelope.svg" alt="Email" />
+            </div>
+            <div class="contact-text">
+              <h3>Email Us</h3>
+              <p>info@example.com</p>
+            </div>
+          </div>
+
+          <div class="contact-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.3614657904004!2d-74.00871262407786!3d40.7100585713939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown.%20Conference%20Center!5e0!3m2!1sko!2skr!4v1751257869410!5m2!1sko!2skr"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="line blue"></div>
         </div>
+
+        <!-- 오른쪽 문의 폼 -->
+        <div class="contact-form">
+          <form>
+            <div class="form-row">
+              <div class="form-group half">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" />
+              </div>
+              <div class="form-group half">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="8"></textarea>
+            </div>
+            <button type="submit" class="send-message-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
   </section>
 </body>
 
