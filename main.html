@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Main Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 스크롤 맨 위로 버튼 -->
+  <button onclick="scrollToTop()" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">▲ Top</button>
+
+  <iframe src="1. layout/layout.html"></iframe>
+  <iframe src="3. header/header.html"></iframe>
+  <iframe src="4. main1/main1.html"></iframe>
+  <iframe src="5. main2/main2.html"></iframe>
+  <iframe src="6. main3/main3.html"></iframe>
+  <iframe src="7. main4/main4.html"></iframe>
+  <iframe src="8. footer/footer.html"></iframe>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+</body>
+
+</html>
