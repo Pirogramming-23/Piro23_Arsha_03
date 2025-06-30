@@ -177,27 +177,32 @@
   .header-left {
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
   }
   
   /* Logo */
-  .logo {
+  .header-logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     padding-left: 10px;
   }
   
-  .logo img {
+  .header-logo img {
     height: 25px;
     width: auto;
     vertical-align: middle;
+    object-fit: contain;
+    max-height: 25px;
   }
   
-  .logo a {
+  .header-logo a {
     text-decoration: none;
     color: inherit;
     display: flex;
     align-items: center;
+    height: 100%;
   }
   
   /* Preview Devices */
@@ -257,6 +262,8 @@
   .current-template {
     display: flex;
     align-items: center;
+    flex: 1;
+    justify-content: center;
   }
   
   .current-template a {
@@ -288,8 +295,6 @@
     cursor: pointer;
   }
   
-  .current-template .template-home:hover {
-  }
   
   .current-template svg {
     width: 16px;
@@ -300,6 +305,7 @@
   .navigate {
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
   }
   .navigate a {
     transition: .3s;
@@ -374,13 +380,13 @@
   }
 
   
-  .index .index-header .logo {
+  .index .index-header .index-header-logo {
     margin-right: auto !important;
     padding-left: 0px;
   }
   
-  .index .index-header .logo a,
-  .index .index-header .logo {
+  .index .index-header .index-header-logo a,
+  .index .index-header .index-header-logo {
     text-decoration: none !important;
     outline: none;
   }
@@ -394,7 +400,7 @@
     margin-left: 0;
   }
   
-  .index .index-header .logo .sitename {
+  .index .index-header .index-header-logo .sitename {
     font-size: 30px;
     margin: 0;
     font-weight: 500;
@@ -828,7 +834,7 @@
   }
   
   /* Bootstrap-like layout utilities for hero section */
-  .container {
+  .index .container {
     width: 100%;
     max-width: 1320px;
     margin-right: auto;
