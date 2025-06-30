@@ -1158,26 +1158,26 @@
   /* 기존 slideLeft 애니메이션 삭제 및 swiperSmoothSnap으로 교체 */
   @keyframes swiperBounceSnap {
     0%      { transform: translateX(0); }
-    2.5%    { transform: translateX(-12.5%); }   /* 0~2.5%: 이동(0.4초) */
-    12.5%   { transform: translateX(-12.5%); }   /* 2.5~12.5%: 멈춤(1.6초) */
-    15%     { transform: translateX(-25%); }
-    25%     { transform: translateX(-25%); }
-    27.5%   { transform: translateX(-37.5%); }
-    37.5%   { transform: translateX(-37.5%); }
-    40%     { transform: translateX(-50%); }
-    50%     { transform: translateX(-50%); }
-    52.5%   { transform: translateX(-62.5%); }
-    62.5%   { transform: translateX(-62.5%); }
-    65%     { transform: translateX(-75%); }
-    75%     { transform: translateX(-75%); }
-    77.5%   { transform: translateX(-87.5%); }
-    87.5%   { transform: translateX(-87.5%); }
-    90%     { transform: translateX(-100%); }
-    100%    { transform: translateX(-100%); }
+    1.5%    { transform: translateX(-236px); }
+    12.5%   { transform: translateX(-236px); }
+    14%     { transform: translateX(-472px); }
+    25%     { transform: translateX(-472px); }
+    26.5%   { transform: translateX(-708px); }
+    37.5%   { transform: translateX(-708px); }
+    39%     { transform: translateX(-944px); }
+    50%     { transform: translateX(-944px); }
+    51.5%   { transform: translateX(-1180px); }
+    62.5%   { transform: translateX(-1180px); }
+    64%     { transform: translateX(-1416px); }
+    75%     { transform: translateX(-1416px); }
+    76.5%   { transform: translateX(-1652px); }
+    87.5%   { transform: translateX(-1652px); }
+    89%     { transform: translateX(-1888px); }
+    100%    { transform: translateX(-1888px); }
   }
 
   .clients .clients-wrapper {
-    animation: swiperBounceSnap 16s cubic-bezier(.77,0,.18,1) infinite;
+    animation: swiperBounceSnap 40s cubic-bezier(.77,0,.18,1) infinite;
   }
 
   /* 호버 시 애니메이션 일시정지 */
@@ -1204,7 +1204,7 @@
     transition: 0.3s;
   }
 
-  /* 호버 효과 - 원본과 동일하게 scale만 적용 */
+  /* 호버 효과  */
   .clients .client-item img:hover {
     transform: scale(1.1);
   }
@@ -1252,6 +1252,53 @@
   .clients .aos-animate {
     opacity: 1;
     transform: scale(1);
+  }
+  
+  /* Swiper*/
+  .swiper {
+    width: 1320px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    animation: swiperBounceSnap 40s cubic-bezier(.77,0,.18,1) infinite;
+    will-change: transform;
+  }
+
+  .swiper-slide {
+    flex: 0 0 auto;
+    width: 170px;
+    margin-right: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-slide:last-child { margin-right: 0; }
+
+  .swiper-slide img {
+    max-height: 36px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @keyframes swiperBounceSnap {
+    0%      { transform: translateX(0); }
+    12.5%   { transform: translateX(-230px); }
+    25%     { transform: translateX(-460px); }
+    37.5%   { transform: translateX(-690px); }
+    50%     { transform: translateX(-920px); }
+    62.5%   { transform: translateX(-1150px); }
+    75%     { transform: translateX(-1380px); }
+    87.5%   { transform: translateX(-1610px); }
+    100%    { transform: translateX(-1840px); }
   }
   
   
