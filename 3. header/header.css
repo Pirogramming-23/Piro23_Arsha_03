@@ -151,6 +151,7 @@
     font-weight: 400;
     line-height: 24px;
   }
+  
   #header {
     position: fixed;
     left: 0;
@@ -1593,6 +1594,7 @@
       border: none;
       width: 100%;
       transition: 0.3s;
+      margin-bottom: 0 !important;
     }
     .dropdown-toggle-label i {
       margin-left: 8px;
@@ -1648,6 +1650,9 @@
     }
   }
   
+  .dropdown-toggle-label {
+    margin: 0;
+  }
   /* Dropdown label should look like a menu link */
   .index-navbar .dropdown-toggle-label,
   .navmenu .dropdown-toggle-label {
