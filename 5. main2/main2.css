@@ -1,0 +1,435 @@
+.portfolio-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #37517e;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 20px;
+  padding-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #47b2e4;
+  border-radius: 2px;
+}
+
+.section-desc {
+  color: #666;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 60px;
+}
+
+label[for="all"],
+label[for="app"],
+label[for="card"],
+label[for="web"] {
+  display: inline-block;
+  padding: 8px 35px 10px 35px;
+  margin: 0 8px 5px;
+  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* 마우스 오버 시 */
+label[for="all"]:hover,
+label[for="app"]:hover,
+label[for="card"]:hover,
+label[for="web"]:hover {
+  background-color: #47b2e4;
+  color: white;
+}
+
+/* 선택된 라디오에 대응하는 label 강조 */
+#all:checked+label[for="all"],
+#app:checked+label[for="app"],
+#card:checked+label[for="card"],
+#web:checked+label[for="web"] {
+  background-color: #47b2e4;
+  color: white;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-item h4 {
+  margin-top: 12px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.portfolio-item p {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.photo-grid {
+  column-count: 3;
+  column-gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /*display: flex;
+            gap: 24px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;*/
+}
+
+.photo-grid .column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.portfolio-item {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  margin-bottom: 24px;
+  break-inside: avoid;
+  /*width: 100%;*/
+  /*display: none;
+            opacity: 0;
+            transform: scale(1);
+            transition: all 0.4s ease;*/
+}
+
+/* --- 모든 필터 항목의 기본 숨김 설정 --- */
+/* photo-grid 내의 모든 필터 카테고리 요소를 기본적으로 숨깁니다.
+   opacity, transform, max-height, visibility를 사용하여 부드러운 전환 효과를 만듭니다. */
+.photo-grid .filter-app,
+.photo-grid .filter-card,
+.photo-grid .filter-web {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  /* 숨겨질 때 약간 축소되고 아래로 이동하는 시각적 효과 */
+  max-height: 0;
+  /* 숨겨질 때 높이를 0으로 만들어 공간을 차지하지 않게 함 */
+  overflow: hidden;
+  /* 내용이 넘치면 숨김 처리 */
+  visibility: hidden;
+  /* 스크린 리더 등에서도 숨김 */
+  transition: all 0.6s ease-in-out;
+  /* 모든 속성 변화에 0.6초간 부드러운 전환 적용 */
+}
+
+/* --- 'All' 버튼 선택 시 --- */
+/* 'all' 라디오 버튼이 선택되면, 모든 필터 카테고리(app, card, web)를 보이게 합니다. */
+#all:checked~.photo-grid .filter-app,
+#all:checked~.photo-grid .filter-card,
+#all:checked~.photo-grid .filter-web {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  max-height: 1000px;
+  /* 이미지가 완전히 보이도록 충분히 큰 높이 설정 */
+  visibility: visible;
+}
+
+
+/* --- 'App' 버튼 선택 시 --- */
+/* 'app' 라디오 버튼이 선택되면, '.filter-app' 클래스를 가진 요소들만 보이게 합니다. */
+#app:checked~.photo-grid .filter-app {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  max-height: 1000px;
+  visibility: visible;
+}
+
+/* --- 'Card' 버튼 선택 시 --- */
+/* 'card' 라디오 버튼이 선택되면, '.filter-card' 클래스를 가진 요소들만 보이게 합니다. */
+#card:checked~.photo-grid .filter-card {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  max-height: 1000px;
+  visibility: visible;
+}
+
+/* --- 'Web' 버튼 선택 시 --- */
+/* 'web' 라디오 버튼이 선택되면, '.filter-web' 클래스를 가진 요소들만 보이게 합니다. */
+#web:checked~.photo-grid .filter-web {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  max-height: 1000px;
+  visibility: visible;
+}
+
+
+.portfolio-wrapper input[type="radio"] {
+  display: none;
+}
+
+.portfolio-wrapper input[type="radio"]:checked+label {
+  background-color: #47b2e4;
+  color: white;
+}
+
+.portfolio-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.portfolio-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  height: 60px;
+  text-align: left;
+}
+
+.portfolio-img:hover .portfolio-info {
+  transform: translateY(0);
+}
+
+.portfolio-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.portfolio-text h4 {
+  font-size: 16px;
+  color: #37517e;
+  margin: 0 0 8px;
+  padding: 0 50px 0 0;
+  font-weight: 700;
+}
+
+.portfolio-text p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.portfolio-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.portfolio-icons img.icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.6;
+  filter: grayscale(100%) brightness(1.2);
+  /* 회색 효과 */
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.portfolio-icons img[src*="link-45deg"] {
+  width: 28px;
+  height: 28px;
+}
+
+.portfolio-icons a:hover img.icon {
+  filter: invert(45%) sepia(100%) saturate(500%) hue-rotate(180deg);
+}
+
+
+/* ---------- 반응형 ---------- */
+@media screen and (max-width: 768px) {
+  .photo-grid.columns {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .photo-grid {
+    column-count: 1;
+  }
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.lightbox:target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  max-width: 90vw;
+  /*height: 100vh;*/
+  margin: 0;
+  padding: 0;
+}
+
+.lightbox-content img {
+  flex: 1;
+  max-height: 90vh;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+  /*border-bottom: none;*/
+}
+
+.lightbox .close,
+.lightbox .prev,
+.lightbox .next {
+  color: white;
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+}
+
+.lightbox-description {
+  background: white;
+  color: black;
+  font-size: 18px;
+  text-align: left;
+  padding: 16px 24px;
+  height: 80px;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.lightbox .close,
+.lightbox .prev,
+.lightbox .next {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 8px;
+}
+
+.lightbox .close {
+  top: 20px;
+  right: 30px;
+  transform: none;
+  font-size: 36px;
+  color: white;
+}
+
+.lightbox .prev {
+  left: 20px;
+}
+
+.lightbox .next {
+  right: 20px;
+}
+
+.lightbox .prev:hover,
+.lightbox .next:hover,
+.lightbox .close:hover {
+  color: white;
+}
+
+#modal-app1:target .prev,
+#modal-app3:target .next,
+#modal-product1:target .prev,
+#modal-product3:target .next,
+#modal-branding1:target .prev,
+#modal-branding3:target .next {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .lightbox-description {
+    font-size: 16px;
+    padding: 12px 16px;
+    height: auto;
+  }
+
+  .lightbox .close,
+  .lightbox .prev,
+  .lightbox .next {
+    font-size: 32px;
+  }
+}
