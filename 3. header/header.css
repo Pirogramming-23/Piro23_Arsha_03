@@ -332,7 +332,7 @@
   
   /* index */
   .index .index-header {
-    --background-color: #3d4d6a;
+    --background-color: rgba(255, 255, 255, 0); /* 초기: 투명 */
     --heading-color: #ffffff;
     color: var(--default-color);
     background-color: var(--background-color);
@@ -345,22 +345,6 @@
     left: 0;
   }
 
-  /* 스크롤 감지를 위한 sticky 요소 */
-  .scroll-detector {
-    position: sticky;
-    top: 90px; /* 헤더 높이 + 상단 헤더 높이 */
-    z-index: 996;
-    height: 1px;
-    background: transparent;
-  }
-
-  /* scroll-detector가 화면에서 사라질 때 헤더 색상 변경 */
-  .scroll-detector:not(:in-viewport) ~ .index-header,
-  .scroll-detector:not(:in-viewport) + .index-header {
-    background-color: rgba(61, 77, 106, 0.95) !important;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  }
   
   .index .index-header .container {
     display: flex;
@@ -434,55 +418,55 @@
   
   /* Target-based navigation highlighting */
   /* When hero section is targeted, highlight Home link */
-  #hero:target ~ .index-header .index-navbar a[href="#hero"],
-  #hero:target ~ .index-header .index-navbar a[href="#hero"].active {
-    color: #47b2e4;
+  body:has(#hero:target) .index-header .index-navbar a[href="#hero"],
+  body:has(#hero:target) .index-header .index-navbar a[href="#hero"].active {
+    color: #47b2e4 !important;
   }
 
   /* When about section is targeted, highlight About link */
-  #about:target ~ .index-header .index-navbar a[href="#about"] {
-    color: #47b2e4;
+  body:has(#about:target) .index-header .index-navbar a[href="#about"] {
+    color: #47b2e4 !important;
   }
 
   /* When services section is targeted, highlight Services link */
-  #services:target ~ .index-header .index-navbar a[href="#services"] {
-    color: #47b2e4;
+  body:has(#services:target) .index-header .index-navbar a[href="#services"] {
+    color: #47b2e4 !important;
   }
 
   /* When portfolio section is targeted, highlight Portfolio link */
-  #portfolio:target ~ .index-header .index-navbar a[href="#portfolio"] {
-    color: #47b2e4;
+  body:has(#portfolio:target) .index-header .index-navbar a[href="#portfolio"] {
+    color: #47b2e4 !important;
   }
 
   /* When team section is targeted, highlight Team link */
-  #team:target ~ .index-header .index-navbar a[href="#team"] {
-    color: #47b2e4;
+  body:has(#team:target) .index-header .index-navbar a[href="#team"] {
+    color: #47b2e4 !important;
   }
 
   /* When pricing section is targeted, highlight Pricing link */
-  #pricing:target ~ .index-header .index-navbar a[href="#pricing"] {
-    color: #47b2e4;
+  body:has(#pricing:target) .index-header .index-navbar a[href="#pricing"] {
+    color: #47b2e4 !important;
   }
 
   /* When blog section is targeted, highlight Blog link */
-  #blog:target ~ .index-header .index-navbar a[href="#blog"] {
-    color: #47b2e4;
+  body:has(#blog:target) .index-header .index-navbar a[href="#blog"] {
+    color: #47b2e4 !important;
   }
 
   /* When contact section is targeted, highlight Contact link */
-  #contact:target ~ .index-header .index-navbar a[href="#contact"] {
-    color: #47b2e4;
+  body:has(#contact:target) .index-header .index-navbar a[href="#contact"] {
+    color: #47b2e4 !important;
   }
 
   /* Reset active state when other sections are targeted */
-  #about:target ~ .index-header .index-navbar a[href="#hero"].active,
-  #services:target ~ .index-header .index-navbar a[href="#hero"].active,
-  #portfolio:target ~ .index-header .index-navbar a[href="#hero"].active,
-  #team:target ~ .index-header .index-navbar a[href="#hero"].active,
-  #pricing:target ~ .index-header .index-navbar a[href="#hero"].active,
-  #blog:target ~ .index-header .index-navbar a[href="#hero"].active,
-  #contact:target ~ .index-header .index-navbar a[href="#hero"].active {
-    color: var(--nav-color);
+  body:has(#about:target) .index-header .index-navbar a[href="#hero"].active,
+  body:has(#services:target) .index-header .index-navbar a[href="#hero"].active,
+  body:has(#portfolio:target) .index-header .index-navbar a[href="#hero"].active,
+  body:has(#team:target) .index-header .index-navbar a[href="#hero"].active,
+  body:has(#pricing:target) .index-header .index-navbar a[href="#hero"].active,
+  body:has(#blog:target) .index-header .index-navbar a[href="#hero"].active,
+  body:has(#contact:target) .index-header .index-navbar a[href="#hero"].active {
+    color: var(--nav-color) !important;
   }
   
   .index .index-header .index-navbar .dropdown a {
@@ -1299,6 +1283,16 @@
     75%     { transform: translateX(-1380px); }
     87.5%   { transform: translateX(-1610px); }
     100%    { transform: translateX(-1840px); }
+  }
+  
+  /* Smooth scroll */
+  :root {
+    scroll-behavior: smooth;
+  }
+  
+  /* Section scroll margin for header */
+  section[id] {
+    scroll-margin-top: 90px; /* 헤더 높이 + 상단 헤더 높이 */
   }
   
   
