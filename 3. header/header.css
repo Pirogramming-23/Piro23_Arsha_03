@@ -159,7 +159,7 @@
     color: #fff;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
-    z-index: 1000;
+    z-index: 10000;
   }
   
   #preview {
@@ -416,6 +416,59 @@
     color: #47b2e4;
   }
   
+  /* Target-based navigation highlighting */
+  /* When hero section is targeted, highlight Home link */
+  #hero:target ~ .index-header .index-navbar a[href="#hero"],
+  #hero:target ~ .index-header .index-navbar a[href="#hero"].active {
+    color: #47b2e4;
+  }
+
+  /* When about section is targeted, highlight About link */
+  #about:target ~ .index-header .index-navbar a[href="#about"] {
+    color: #47b2e4;
+  }
+
+  /* When services section is targeted, highlight Services link */
+  #services:target ~ .index-header .index-navbar a[href="#services"] {
+    color: #47b2e4;
+  }
+
+  /* When portfolio section is targeted, highlight Portfolio link */
+  #portfolio:target ~ .index-header .index-navbar a[href="#portfolio"] {
+    color: #47b2e4;
+  }
+
+  /* When team section is targeted, highlight Team link */
+  #team:target ~ .index-header .index-navbar a[href="#team"] {
+    color: #47b2e4;
+  }
+
+  /* When pricing section is targeted, highlight Pricing link */
+  #pricing:target ~ .index-header .index-navbar a[href="#pricing"] {
+    color: #47b2e4;
+  }
+
+  /* When blog section is targeted, highlight Blog link */
+  #blog:target ~ .index-header .index-navbar a[href="#blog"] {
+    color: #47b2e4;
+  }
+
+  /* When contact section is targeted, highlight Contact link */
+  #contact:target ~ .index-header .index-navbar a[href="#contact"] {
+    color: #47b2e4;
+  }
+
+  /* Reset active state when other sections are targeted */
+  #about:target ~ .index-header .index-navbar a[href="#hero"].active,
+  #services:target ~ .index-header .index-navbar a[href="#hero"].active,
+  #portfolio:target ~ .index-header .index-navbar a[href="#hero"].active,
+  #team:target ~ .index-header .index-navbar a[href="#hero"].active,
+  #pricing:target ~ .index-header .index-navbar a[href="#hero"].active,
+  #blog:target ~ .index-header .index-navbar a[href="#hero"].active,
+  #contact:target ~ .index-header .index-navbar a[href="#hero"].active {
+    color: var(--nav-color);
+  }
+  
   .index .index-header .index-navbar .dropdown a {
     display: flex;
     align-items: center;
@@ -616,6 +669,7 @@
   .index .hero .btn-get-started:hover {
     color: var(--contrast-color);
     background: color-mix(in srgb, var(--accent-color), transparent 15%);
+    cursor: pointer;
   }
   
   .index .hero .btn-watch-video {
@@ -628,6 +682,7 @@
     display: inline-flex;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
   }
   
   .index .hero .btn-watch-video svg {
@@ -748,11 +803,6 @@
       transform: translateY(0);
     }
   }
-
-  .hero-animate {
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 0.2s forwards;
-  }
   
   @keyframes zoomOutFadeIn {
     0% {
@@ -763,6 +813,300 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+  
+  /* =======================================================
+     GLightbox Style Video Modal
+     ======================================================== */
+
+  /* Hide modal by default */
+  .video-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Show modal when checkbox is checked */
+  .modal-toggle:checked ~ .video-modal {
+    display: flex;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Modal container */
+  .gcontainer {
+    position: relative;
+    max-width: 960px;
+    width: 90vw;
+    max-height: 90vh;
+    margin: auto;
+    z-index: 1;
+    animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  @keyframes modalIn {
+    from {
+      transform: scale(0.95) translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Video container */
+  .gvideo-container {
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .gslide-video {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Plyr video player styles */
+  .plyr {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .plyr__video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+
+  .plyr__video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+  }
+
+  /* Overlay play button */
+  .plyr__control--overlaid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .plyr__control--overlaid:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .plyr__control--overlaid svg {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+  }
+
+  /* Video poster */
+  .plyr__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    z-index: 5;
+  }
+
+  /* Close button */
+  .gclose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .gclose:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+  }
+
+  .gclose svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+  }
+
+  /* GLightbox specific styles */
+  .gslider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gslide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gslide-inner-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ginner-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .gslide-media {
+    width: 100%;
+    height: auto;
+  }
+
+  .gvideo-wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .youtube-video {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .gcontainer {
+      width: 95vw;
+    }
+    
+    .plyr__control--overlaid {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .plyr__control--overlaid svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .gclose {
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+    }
+    
+    .gclose svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .plyr__control--overlaid {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .plyr__control--overlaid svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  /* Section Styles */
+  .about-section,
+  .services-section,
+  .portfolio-section,
+  .team-section,
+  .pricing-section,
+  .blog-section,
+  .contact-section {
+    padding: 80px 0;
+    min-height: 400px;
+    background: #f8f9fa;
+  }
+
+  .about-section h2,
+  .services-section h2,
+  .portfolio-section h2,
+  .team-section h2,
+  .pricing-section h2,
+  .blog-section h2,
+  .contact-section h2 {
+    font-family: var(--heading-font);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--heading-color);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .about-section p,
+  .services-section p,
+  .portfolio-section p,
+  .team-section p,
+  .pricing-section p,
+  .blog-section p,
+  .contact-section p {
+    font-size: 18px;
+    color: var(--default-color);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
   }
   
   
