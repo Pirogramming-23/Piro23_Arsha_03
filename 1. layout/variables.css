@@ -1,7 +1,6 @@
-
 :root {
 
-/* ───── 네비게이션 관련 ───── */
+    /* ───── 네비게이션 관련 ───── */
 
     --nav-color: #ffffff;
     --nav-hover-color: #47b2e4;
@@ -11,7 +10,7 @@
     --nav-dropdown-hover-color: #47b2e4;
 
 
-/* ───── 기본 색상 (Arsha Theme Colors) ───── */
+    /* ───── 기본 색상 (Arsha Theme Colors) ───── */
 
     --background-color: #ffffff;
     --default-color: #444444;
@@ -20,24 +19,34 @@
     --surface-color: #ffffff;
     --contrast-color: #ffffff;
 
-    
-/* ───── 폰트 ───── */
+
+    /* ───── 폰트 ───── */
 
     --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --heading-font: "Jost", sans-serif;
     --nav-font: "Poppins", sans-serif;
 
 
-/* ───── SwiperJS (슬라이더) ───── */
+    /* ───── SwiperJS (슬라이더) ───── */
 
     --swiper-navigation-size: 44px;
     --swiper-theme-color: #007aff;
+
+    --real-slide-count: 4;
+    /* 실제 보여주고 싶은 슬라이드 개수 */
+    --slide-count: calc(var(--real-slide-count) + 1);
+    /* 실제 + 더미 슬라이드 */
+    --slide-duration: 5s;
+    /* 각 슬라이드가 보여지는 시간 */
+    --total-animation-duration: calc(var(--slide-count) * var(--slide-duration));
+    /* 전체 애니메이션 시간 */
 }
 
 
 /* ───── Bootstrap 관련 (선택적으로 유지) ───── */
 
-:root, [data-bs-theme=light] {
+:root,
+[data-bs-theme=light] {
     --bs-carousel-indicator-active-bg: #fff;
     --bs-carousel-caption-color: #fff;
     --bs-carousel-control-icon-filter: ;
@@ -55,7 +64,8 @@
 
 /* ───── 색상 관련 ───── */
 
-:root, [data-bs-theme=light] {
+:root,
+[data-bs-theme=light] {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
     --bs-purple: #6f42c1;
