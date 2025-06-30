@@ -145,7 +145,12 @@
     --bs-breakpoint-xl: 1200px;
     --bs-breakpoint-xxl: 1400px;
   }
-  
+  body {
+    font-family: var(--default-font);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
   #header {
     position: fixed;
     left: 0;
@@ -558,18 +563,15 @@
     border-radius: 50px;
     transition: 0.3s;
     text-decoration: none !important;
+    font-family: var(--default-font);
+    line-height: 21px;
   }
   
   .index .index-header .btn-getstarted:hover {
     background: color-mix(in srgb, var(--accent-color), transparent 15%);
   }
   
-  body {
-    font-family: var(--default-font);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-  }
+
   
   .me-auto {
     margin-right: auto !important;
@@ -1566,6 +1568,14 @@
   }
 
   /* 모바일 메뉴 열릴 때 body 스크롤 방지 (JS 필요, CSS-only 불가) */
+  
+  @media (max-width: 1200px) {
+    .index .index-header .btn-getstarted {
+      order: 2;
+      margin: 0 52px 0 0 !important;
+      padding: 6px 15px !important;
+    }
+  }
   
   
   
