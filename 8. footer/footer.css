@@ -45,8 +45,12 @@
 .Arsha-footer {
   background-color: #fff;
   color: #444;
-  padding-top: 60px;
+  padding: 60px 0 40px 0;
   font-size: 1em;
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  clear: both;
 }
 
 .container-footer-top {
@@ -56,8 +60,8 @@
 }
 
 .footer-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 32px;
   margin: 0 auto 32px auto;
   max-width: 1100px;
@@ -67,13 +71,15 @@
 /* 회사 정보 */
 .Arsha {
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
 }
 
-.Arsha-title h2 {
+.Arsha h2 {
   font-size: 24px;
   color: #37517e;
   margin-bottom: 10px;
+  font-family: var(--heading-font);
+  font-weight: 700;
 }
 
 .Arsha p {
@@ -88,12 +94,13 @@
 }
 
 .footer-useful-links h3,
-.footer-our-services h4,
-.footer-follow h5 {
+.footer-our-services h3,
+.footer-follow h3 {
   font-size: 18px;
   color: #37517e;
   margin-bottom: 15px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: var(--heading-font);
 }
 
 .footer-useful-links ul,
@@ -177,8 +184,8 @@
   position: fixed;
   right: 32px;
   bottom: 32px;
-  width: 48px;
-  height: 48px;
+  width: 38.4px;
+  height: 38.4px;
   border-radius: 50%;
   background: #47b2e4;
   border: none;
@@ -188,17 +195,19 @@
   box-shadow: 0 2px 8px rgba(80, 120, 200, 0.15);
   cursor: pointer;
   z-index: 1000;
-  transition: background 0.2s;
+  transition: background 0.2s, opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.scroll-to-top img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
+.scroll-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.scroll-to-top:hover {
-  background: #209dd8;
+.scroll-to-top svg {
+  width: 25.6px;
+  height: 25.6px;
 }
 
 html {
@@ -206,9 +215,7 @@ html {
 }
 
 .footer-follow {
-  overflow: hidden;
   min-width: 220px;
-  white-space: nowrap;
 }
 
 .newsletter-section {
@@ -216,6 +223,8 @@ html {
   padding: 48px 0 40px 0;
   text-align: center;
   font-size: 1em;
+  clear: both;
+  margin-top: 0;
 }
 
 .newsletter-section .container-newsletter {
@@ -223,24 +232,32 @@ html {
   margin: 0 auto;
 }
 
+.newsletter-section .container-newsletter h2 {
+  margin-bottom: 12px;
+}
+
+.newsletter-section .container-newsletter p {
+  margin-bottom: 18px;
+}
+
 .newsletter-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 500px;
+  max-width: 400px;
   margin: 0 auto;
   background: #fff;
-  border-radius: 30px;
+  border-radius: 24px;
   box-shadow: 0 8px 24px rgba(80, 120, 200, 0.08);
-  padding: 6px 8px;
+  padding: 5px 6px;
 }
 
 .newsletter-form input[type="email"] {
   border: none;
   outline: none;
-  padding: 14px 18px;
-  font-size: 1rem;
-  border-radius: 30px 0 0 30px;
+  padding: 11px 14px;
+  font-size: 0.8rem;
+  border-radius: 24px 0 0 24px;
   flex: 1;
   background: transparent;
 }
@@ -249,10 +266,10 @@ html {
   background: #47b2e4;
   color: #fff;
   border: none;
-  padding: 0 32px;
-  height: 44px;
-  border-radius: 30px;
-  font-size: 1.1rem;
+  padding: 0 25px;
+  height: 35px;
+  border-radius: 24px;
+  font-size: 0.88rem;
   font-family: var(--heading-font);
   font-weight: 500;
   cursor: pointer;
